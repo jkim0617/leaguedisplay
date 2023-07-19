@@ -24,7 +24,7 @@ function App() {
 
   const filterByRole = (e) => {
     setChampionList(champions.filter((champ) => {
-      return champ.tags.includes(champRole)
+      return champ.tags.includes(champRole);
     }))
   }
 
