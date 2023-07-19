@@ -1,5 +1,5 @@
 import './App.css';
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import champions from "lol-champions"
 import Cards from "./Cards.js";
 import Display from "./display.js";
@@ -11,37 +11,29 @@ function App() {
   const [champRole, setChampRole] = useState('all')
   const [champName, setChampName] = useState('')
 
-  // const filterByName = (e) => {
-  //   setChampionList(champions.filter(champ => {
-  //     return champ.name.toLowerCase().includes(e.target.value.toLowerCase())
-  //   }))
-  // }
-
   const filterByName = (e) => {
     setChampName(e.target.value.toLowerCase());
-    updateChampList();
-  }
-
-  const filterByRole = (e) => {
-    setChampionList(champions.filter((champ) => {
-      return champ.tags.includes(champRole);
-    }))
   }
 
   const updateChampList = () => {
-    setChampionList(champions.filter(champ => {
-      return champ.name.toLowerCase().includes(champName)
-    }))
+    if (champRole === 'all') {
+      setChampionList(champions.filter(champ => {
+        return (champ.name.toLowerCase().includes(champName.toLowerCase()))
+      }))
+    } else {
+      setChampionList(champions.filter(champ => {
+        return (champ.name.toLowerCase().includes(champName.toLowerCase()) && champ.tags.includes(champRole))
+      }))
+    }
   }
 
-  console.log(champName)
+  useEffect(updateChampList, [champRole, champName]);
 
 
   const champCards = championList.map((champInfo) => {
     return <Cards championInfo={champInfo} setChampHighlight={setChampHighlight} />
   })
 
-  console.log(champRole)
 
   return (
     <div className="mainContainer">
@@ -53,49 +45,38 @@ function App() {
         ></input>
         <div className='buttonContainer'>
           <button
-            onClick={(e) => {
-              setChampionList(champions)
+            onClick={() => {
+              setChampRole('all')
             }}
           >All</button>
           <button
-            onClick={(e) => {
-              setChampRole('fighter')
-              filterByRole();
+            onClick={() => {
+              setChampRole('Fighter')
             }}
           >Fighter</button>
           <button
             onClick={() => {
-              setChampionList(champions.filter(champ => {
-                return champ.tags.includes('Tank')
-              }))
+              setChampRole('Tank')
             }}
           >Tank</button>
           <button
             onClick={() => {
-              setChampionList(champions.filter(champ => {
-                return champ.tags.includes('Mage')
-              }))
+              setChampRole('Mage')
             }}
           >Mage</button>
           <button
             onClick={() => {
-              setChampionList(champions.filter(champ => {
-                return champ.tags.includes('Assassin')
-              }))
+              setChampRole('Assassin')
             }}
           >Assassin</button>
           <button
             onClick={() => {
-              setChampionList(champions.filter(champ => {
-                return champ.tags.includes('Support')
-              }))
+              setChampRole('Support')
             }}
           >Support</button>
           <button
             onClick={() => {
-              setChampionList(champions.filter(champ => {
-                return champ.tags.includes('Marksman')
-              }))
+              setChampRole('Marksman')
             }}
           >Marksman</button>
         </div>
