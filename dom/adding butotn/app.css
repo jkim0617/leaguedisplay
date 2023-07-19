@@ -1,0 +1,17 @@
+/* *{
+    margin: 0;
+    padding: 0;
+} */
+
+body{
+    display: flex;
+    flex-direction: column;
+    width: auto;
+    position:relative;
+}
+
+button{
+    width: 5%;
+    margin: 10px 0;
+}
+
