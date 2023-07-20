@@ -12,3 +12,9 @@
 img {
   width: 200px;
 }
+
+.displayUpper {
+  width: 40%;
+  display: flex;
+  justify-content: space-between;
+}

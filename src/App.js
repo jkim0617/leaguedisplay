@@ -111,6 +111,18 @@ function App() {
       <div className="champContainer">
         {champCards}
       </div>
+      <div className="teamBuilder">
+        <label for="team-type">Select Team Type</label>
+        <select name="teamType" id="team-type">
+          <option value="random">Random</option>
+          <option value="tank">Tanky</option>
+          <option value="speed">Speedy</option>
+          <option value="mana">YOU HAVE NO MANA</option>
+        </select>
+        <div className="Team">
+
+        </div>
+      </div>
     </div >
   )
 }
