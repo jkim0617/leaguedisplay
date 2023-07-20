@@ -37,7 +37,6 @@ function App() {
 
   return (
     <div className="mainContainer">
-      <Display currChamp={champHighlight} />
       <div className='filterContainer'>
         <input
           type="text"
@@ -53,33 +52,61 @@ function App() {
             onClick={() => {
               setChampRole('Fighter')
             }}
-          >Fighter</button>
+          ><img
+            src="https://universe.leagueoflegends.com/images/role_icon_fighter.png"
+          >
+            </img></button>
           <button
             onClick={() => {
               setChampRole('Tank')
             }}
-          >Tank</button>
+          ><img
+            src='https://www.mobafire.com/images/wiki/roles/tank.png'
+          >
+            </img>
+          </button>
           <button
             onClick={() => {
               setChampRole('Mage')
             }}
-          >Mage</button>
+          >
+            <img
+              src='https://www.mobafire.com/images/wiki/roles/mage.png'
+            >
+            </img>
+          </button>
           <button
             onClick={() => {
               setChampRole('Assassin')
             }}
-          >Assassin</button>
+          >
+            <img
+              src="https://www.mobafire.com/images/wiki/roles/assassin.png">
+            </img>
+          </button>
           <button
             onClick={() => {
               setChampRole('Support')
             }}
-          >Support</button>
+          >
+            <img
+              src='https://www.mobafire.com/images/wiki/roles/support.png'
+            >
+            </img>
+          </button>
           <button
             onClick={() => {
               setChampRole('Marksman')
             }}
-          >Marksman</button>
+          >
+            <img
+              src="https://www.mobafire.com/images/wiki/roles/marksman.png">
+            </img>
+          </button>
         </div>
+      </div>
+      <div className="displayContainer">
+        <Display currChamp={champHighlight} />
       </div>
       <div className="champContainer">
         {champCards}
